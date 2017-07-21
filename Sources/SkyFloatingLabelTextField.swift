@@ -69,7 +69,7 @@ public class SkyFloatingLabelTextField: UITextField {
         if let
             placeholder = self.placeholder,
             font = self.placeholderFont ?? self.font {
-                self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName:placeholderColor,
+                self.attributedPlaceholder = NSAttributedString(string: NSLocalizedString(placeholder, comment: ""), attributes: [NSForegroundColorAttributeName:placeholderColor,
                     NSFontAttributeName: font])
         }
     }
@@ -400,7 +400,10 @@ public class SkyFloatingLabelTextField: UITextField {
                 titleText = self.titleOrPlaceholder()
             }
         }
-        self.titleLabel.text = titleText
+        
+        if let titleText = titleText {
+            self.titleLabel.text = NSLocalizedString(titleText, comment: "")
+        }
         
         self.updateTitleVisibility(animated)
     }
